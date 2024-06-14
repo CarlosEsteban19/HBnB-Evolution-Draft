@@ -33,6 +33,7 @@ def create_place():
             abort(404, description="Amenity not found")
     user.add_place(place)
     place.save(place.id, "Place", place)
+    user.save(user.id, "User", user)
     return jsonify(place.to_dict()), 201
 
 
