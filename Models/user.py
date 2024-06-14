@@ -29,14 +29,14 @@ class User(DataManager):
         """Add place to list of user places"""
         if not isinstance(place, Place):
             raise ValueError("place must be a Place instance")
-        self.places.append(place)
+        self.places.append(place.id)
         self.__updated_at = datetime.now().strftime("%B/%d/%Y %I:%M:%S %p")
 
     def add_review(self, review):
         """Add review to list of user reviews"""
         if not isinstance(review, Review):
             raise ValueError("review must be a Review instance")
-        self.reviews.append(review)
+        self.reviews.append(review.id)
         self.__updated_at = datetime.now().strftime("%B/%d/%Y %I:%M:%S %p")
 
     @property
@@ -124,8 +124,8 @@ class User(DataManager):
             "password": self.__password,
             "created_at": self.__created_at,
             "updated_at": self.__updated_at,
-            "places": [place.to_dict() for place in self.places],
-            "reviews": [review.to_dict() for review in self.reviews],
+            "places": [place for place in self.places],
+            "reviews": [review for review in self.reviews],
         }
 
 

@@ -30,6 +30,8 @@ def create_review(place_id):
     place.add_review(review)
     user.add_review(review)
     review.save(review.id, "Review", review)
+    place.save(place.id, "Place", place)
+    user.save(user.id, "User", user)
     return jsonify(review.to_dict()), 201
 
 

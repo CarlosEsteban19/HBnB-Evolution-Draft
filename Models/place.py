@@ -227,8 +227,8 @@ class Place(DataManager):
             "bathrooms": self.__bathrooms,
             "price": self.__price,
             "max_guests": self.__max_guests,
-            "amenities": [amenity.to_dict() for amenity in self.amenities],
-            "reviews": [review.to_dict() for review in self.reviews],
+            "amenities": [amenity for amenity in self.amenities],
+            "reviews": [review for review in self.reviews],
         }
 
 
